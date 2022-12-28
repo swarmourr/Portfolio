@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Laptop price Prediction </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="../css/animate.css">
+
+  <link rel="stylesheet" href="../css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../css/magnific-popup.css">
+
+  <link rel="stylesheet" href="../css/aos.css">
+
+  <link rel="stylesheet" href="../css/ionicons.min.css">
+
+  <link rel="stylesheet" href="../css/flaticon.css">
+  <link rel="stylesheet" href="../css/icomoon.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .markdown-body {
+      background-color: #d8d8d8;
+      border: 3px solid;
+      border-color: black;
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+    }
+  </style>
+
+
+  <script>
+    function CopyToClipboard(id) {
+      var r = document.createRange();
+      r.selectNode(document.getElementById(id));
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(r);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+    }
+  </script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span>H</span>amza SAFRI</a>
+      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
+        data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav nav ml-auto">
+          <li class="nav-item"><a href="../index.html#home-section" class="nav-link"><span>Home</span></a></td>
+            </tr>
+          <li class="nav-item"><a href="../index.html#about-section" class="nav-link"><span>About</span></a></td>
+            </tr>
+          <li class="nav-item"><a href="../index.html#resume-section" class="nav-link"><span>Resume</span></a></td>
+            </tr>
+          <li class="nav-item"><a href="../index.html#services-section" class="nav-link"><span>Projects</span></a></td>
+            </tr>
+          <li class="nav-item"><a href="../index.html#contact-section" class="nav-link"><span>Contact</span></a></td>
+            </tr>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
+        <div class="col-lg-10 ftco-animate d-flex align-items-center">
+          <div class="text text-center">
+            <span class="icon">
+              <i class='fa fa-laptop fa-5x' style='color: #3e64ff'></i>
+            </span>
+            <h1 class="mb-3 bread">Laptop price Prediction</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="../index.html">Home <i
+                    class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
+                  href="../index.html#services-section">Projects <i class="ion-ios-arrow-forward"></i></a></span>
+              <span>Laptop price Prediction
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row">
+        <div class=" ftco-animate">
+          <h2 class="mb-3">Overview</h2>
+          <p>We are going to build a project to predict the price of laptops. The problem statement
+            is: if a user wants to buy a laptop, our application must be compatible to provide a
+            provisional price of the laptop based on the user's configurations. In addition to the
+            data preparation process and model training in this project we are interested in the
+            integration of MLops tools from tracking to deployment .</p>
+          <h2 class="mb-3">Data</h2>
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="false" aria-controls="collapseOne">
+                    Data Description
+                  </button>
+                  <a href="https://dagshub.com/swarmourr/laptop_price/src/main/data/raw/Cleaned_Laptop_data.csv">
+                    <button type="button" class="btn btn-primary float-right"><i class="fa fa-download"> Raw
+                        Data</i></button>
+                  </a>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <p>The Laptop Dataset contains 23 features/attributes and 896 records. Since only one dataset is
+                    given, we can use this data for training and testing the model. Let's explore through the features
+                    of the Dataset.</p>
+                  <div class="table-responsive table-bordered">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Feature</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>brand </td>
+                          <td> Manufacturer of Laptop.</td>
+                        </tr>
+                        <tr>
+                          <td> model </td>
+                          <td> Model name of the Laptop.</td>
+                        </tr>
+                        <tr>
+                          <td> processor_brand </td>
+                          <td> Manufacturer of the Processor.</td>
+                        </tr>
+                        <tr>
+                          <td> processor_name </td>
+                          <td> An integral part of the laptop, the processor will determine how powerful your computer
+                            is.</td>
+                        </tr>
+                        <tr>
+                          <td> processor_gnrtn </td>
+                          <td> A geneartion is a group of processors that were launched in some particular years and had
+                            significant improvements from processors launched earlier.</td>
+                        </tr>
+                        <tr>
+                          <td> ram_gb </td>
+                          <td> The storage size of ram in GB(Giga Bytes)</td>
+                        </tr>
+                        <tr>
+                          <td> ram_type </td>
+                          <td> The type of RAM used. This feature contains values such
+                            as-DDR4,LPDDR4X,LPDDR4,LPDDR3,DDR3,DDR5</td>
+                        </tr>
+                        <tr>
+                          <td> ssd </td>
+                          <td> The storage size of SSD.</td>
+                        </tr>
+                        <tr>
+                          <td> hdd </td>
+                          <td> The storage size of Hard Disk used .</td>
+                        </tr>
+                        <tr>
+                          <td> os </td>
+                          <td> Operating system such as Windows, DOS, Mac.</td>
+                        </tr>
+                        <tr>
+                          <td> os_bit </td>
+                          <td> OS Bit with values as 64 bit, 32 bit.</td>
+                        </tr>
+                        <tr>
+                          <td> graphic_card_gb </td>
+                          <td> The size of graphic card used in the Laptop.</td>
+                        </tr>
+                        <tr>
+                          <td> weight </td>
+                          <td> The type of Laptop based on weight. This feature contains values such as- Casual,
+                            ThinNlight, Gaming</td>
+                        </tr>
+                        <tr>
+                          <td> display_size </td>
+                          <td> Display size in inches .</td>
+                        </tr>
+                        <tr>
+                          <td> warranty </td>
+                          <td> Warranty in no. of years .</td>
+                        </tr>
+                        <tr>
+                          <td> Touchscreen </td>
+                          <td> This feature reveals whether the Laptop has touchscreen feature or not.</td>
+                        </tr>
+                        <tr>
+                          <td> msoffice </td>
+                          <td> This feature reveals whether the Laptop has MS Office installed or not.</td>
+                        </tr>
+                        <tr>
+                          <td> old_price </td>
+                          <td> Price of the Laptop when it was released.</td>
+                        </tr>
+                        <tr>
+                          <td> discount </td>
+                          <td> Discount percentage for price available for the laptop.</td>
+                        </tr>
+                        <tr>
+                          <td> star_rating </td>
+                          <td> User rating for the laptop with max rating as 5.0</td>
+                        </tr>
+                        <tr>
+                          <td> ratings </td>
+                          <td> Total no. of ratings received for the Laptop model.</td>
+                        </tr>
+                        <tr>
+                          <td> reviews </td>
+                          <td> No. of reviews received for the Laptop model.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="accordion" id="accordionExample2">
+              <div class="card">
+                <div class="card-header" id="headingpros">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne2"
+                      aria-expanded="false" aria-controls="collapseOne2">
+                      Data Processing
+                    </button>
+                    <a href="https://dagshub.com/swarmourr/laptop_price/src/main/data/processed">
+                      <button type="button" class="btn btn-primary float-right"><i class="fa fa-download"> Processed
+                          Data </i></button>
+                    </a>
+                  </h2>
+                  <p>From the first few records itself we could notice that :
+                    <ul>
+                      <li>
+                        Under the display_size column there are values which are represented as 'Missing' that can
+                        represent missing value for display_size column or ohter columns.
+                      </li>
+                      <li>
+                        Convert the columns ram_gb, ssd, processor_gnrtn os-bit and hdd to numeric by removing the unit
+                        written after value
+                      </li>
+                    </ul></p>
+                </div>
+                <div id="collapseOne2" class="collapse show" aria-labelledby="headingpros"
+                  data-parent="#accordionExample2">
+                  <div class="card-body">
+                    <h4>Missing Data</h4>
+            
+                    <p class=" text-center">
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code1"
+                        aria-expanded="false" aria-controls="code1">Show code</button>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#output1"
+                        aria-expanded="false" aria-controls="output1">Show output</button>
+                    </p>
+                    <div class="row">
+                      <div class="col">
+                        <div class="collapse multi-collapse" id="code1">
+                          <div class="card card-body">
+                            <md-block id="code1copy">
+                              ```py
+                              for column in data.columns:
+                              print(column,(data[column]=='Missing').sum())
+                              ```
+                            </md-block>
+                            <button type="button" class="btn btn-primary btn-sm float-right"
+                              onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy code</i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="collapse multi-collapse" id="output1">
+                          <div class="card card-body">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Feature</th>
+                                  <th>Missing Data</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt;width:62pt" width="83" height="19">brand
+                                  </td>
+                                  <td class="xl158549" style="width:62pt" width="83" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">model</td>
+                                  <td class="xl158549" align="right">95</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">processor_br<span
+                                      style="display:none">and</span></td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">processor_na<span
+                                      style="display:none">me</span></td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">processor_gn<span
+                                      style="display:none">rtn</span></td>
+                                  <td class="xl158549" align="right">239</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">ram_gb</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">ram_type</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">ssd</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">hdd</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">os</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">os_bit</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">graphic_card_<span
+                                      style="display:none">gb</span></td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">weight</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">display_size</td>
+                                  <td class="xl158549" align="right">332</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">warranty</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">Touchscreen</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">msoffice</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">latest_price</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">old_price</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">discount</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">star_rating</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">ratings</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">reviews</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <!--[if supportMisalignedColumns]-->
+                                <tr style="display:none" height="0">
+                                  <td style="width:62pt" width="83"></td>
+                                  <td style="width:62pt" width="83"></td>
+                                </tr>
+                                <!--[endif]-->
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="info alert-info alert-dismissible fade show">
+                      As expected we observe that the features like model, preocessor_gnrtn, display_size contains a lot
+                      of missing values
+                      which is denoted as "Missing" that we need to impute. let's replace it with NaN
+                      <div class="markdown-body">
+                        <md-block id="code2copy">
+                          ```py
+                          data=data.replace('Missing',np.nan)
+                          ```
+                        </md-block>
+                        <button type="button" class="btn btn-primary btn-sm float-right"
+                          onclick="CopyToClipboard('code2copy')"><i class="fa fa-copy"></i></button>
+                      </div>
+                      </br>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="collapseOne2" class="collapse show" aria-labelledby="headingpros"
+                  data-parent="#accordionExample2">
+                  <div class="card-body">
+                    <h4>Data Cleaning</h4>
+                    <p class=" text-center">
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code1"
+                        aria-expanded="false" aria-controls="code1">Show code</button>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#output1"
+                        aria-expanded="false" aria-controls="output1">Show output</button>
+                    </p>
+                    <div class="row">
+                      <div class="col">
+                        <div class="collapse multi-collapse" id="code1">
+                          <div class="card card-body">
+                            <md-block id="code1copy">
+                              ```py
+                              data['ram_gb'] = data['ram_gb'].str.replace("GB", "")
+                              data['ssd'] = data['ssd'].str.replace("GB", "")
+                              data['hdd'] = data['hdd'].str.replace("GB", "")
+                              data['os_bit'] = data['os_bit'].str.replace("-bit", "")
+                              data['processor_gnrtn'] = data['processor_gnrtn'].str.replace("th", "")
+                              data['ram_gb'] = data['ram_gb'].astype('int32')
+                              data['os_bit'] = data['os_bit'].astype('int32')
+                              data['ssd'] = data['ssd'].astype('int32')
+                              data['hdd'] = data['hdd'].astype('int32')
+                              data['processor_gnrtn'] = data['processor_gnrtn'].astype('int32')
+                              ```
+                            </md-block>
+                            <button type="button" class="btn btn-primary btn-sm float-right"
+                              onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy code</i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="collapse multi-collapse" id="output1">
+                          <div class="card card-body">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Feature</th>
+                                  <th>Data Cleaning </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt;width:62pt" width="83" height="19">brand
+                                  </td>
+                                  <td class="xl158549" style="width:62pt" width="83" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">model</td>
+                                  <td class="xl158549" align="right">95</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">processor_br<span
+                                      style="display:none">and</span></td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">processor_na<span
+                                      style="display:none">me</span></td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">processor_gn<span
+                                      style="display:none">rtn</span></td>
+                                  <td class="xl158549" align="right">239</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">ram_gb</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">ram_type</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">ssd</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">hdd</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">os</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">os_bit</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">graphic_card_<span
+                                      style="display:none">gb</span></td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">weight</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">display_size</td>
+                                  <td class="xl158549" align="right">332</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">warranty</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">Touchscreen</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">msoffice</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">latest_price</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">old_price</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">discount</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">star_rating</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">ratings</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <tr style="height:14.4pt" height="19">
+                                  <td class="xl158549" style="height:14.4pt" height="19">reviews</td>
+                                  <td class="xl158549" align="right">0</td>
+                                </tr>
+                                <!--[if supportMisalignedColumns]-->
+                                <tr style="display:none" height="0">
+                                  <td style="width:62pt" width="83"></td>
+                                  <td style="width:62pt" width="83"></td>
+                                </tr>
+                                <!--[endif]-->
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="info alert-info alert-dismissible fade show">
+                      As expected we observe that the features like model, preocessor_gnrtn, display_size contains a lot
+                      of missing values
+                      which is denoted as "Missing" that we need to impute. let's replace it with NaN
+                      <div class="markdown-body">
+                        <md-block id="code2copy">
+                          ```py
+                          data=data.replace('Missing',np.nan)
+                          ```
+                        </md-block>
+                        <button type="button" class="btn btn-primary btn-sm float-right"
+                          onclick="CopyToClipboard('code2copy')"><i class="fa fa-copy"></i></button>
+                      </div>
+                      </br>
+                    </div>
+                  </div>
+                </div>
+
+                
+              </div>
+            </div>  
+
+        </div>
+      </div>
+    </div>
+  </section> <!-- .section -->
+
+  <footer class="ftco-footer ftco-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">About</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
+              blind texts.</p>
+            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4 ml-md-4">
+            <h2 class="ftco-heading-2">Links</h2>
+            <ul class="list-unstyled">
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Services</a></li>
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li>
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Services</h2>
+            <ul class="list-unstyled">
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Web Design</a></li>
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Web Development</a></li>
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Business Strategy</a></li>
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Data Analysis</a></li>
+              <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Graphic Design</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San
+                    Francisco, California, USA</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span
+                      class="text">info@yourdomain.com</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
+            <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com"
+              target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        stroke="#F96D00" />
+    </svg></div>
+
+  <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery.easing.1.3.js"></script>
+  <script src="../js/jquery.waypoints.min.js"></script>
+  <script src="../js/jquery.stellar.min.js"></script>
+  <script src="../js/owl.carousel.min.js"></script>
+  <script src="../js/jquery.magnific-popup.min.js"></script>
+  <script src="../js/aos.js"></script>
+  <script src="../js/jquery.animateNumber.min.js"></script>
+  <script src="../js/scrollax.min.js"></script>
+
+  <script src="../js/main.js"></script>
+
+</body>
+
+</html>
