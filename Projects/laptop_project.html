@@ -251,11 +251,10 @@
                     <ul>
                       <li>
                         Under the display_size column there are values which are represented as 'Missing' that can
-                        represent missing value for display_size column or ohter columns.
+                        represent missing value for display_size column or other columns.
                       </li>
                       <li>
-                        Convert the columns ram_gb, ssd, processor_gnrtn os-bit and hdd to numeric by removing the unit
-                        written after value
+                        Convert the columns to numeric by removing the unit written after value
                       </li>
                     </ul></p>
                 </div>
@@ -405,21 +404,24 @@
                         </div>
                       </div>
                     </div>
-                    <div class="info alert-info alert-dismissible fade show">
+                    <div class="card card-body">
                       As expected we observe that the features like model, preocessor_gnrtn, display_size contains a lot
                       of missing values
                       which is denoted as "Missing" that we need to impute. let's replace it with NaN
                       <div class="markdown-body">
+                        <center>
                         <md-block id="code2copy">
                           ```py
                           data=data.replace('Missing',np.nan)
                           ```
                         </md-block>
+                      </center>
                         <button type="button" class="btn btn-primary btn-sm float-right"
                           onclick="CopyToClipboard('code2copy')"><i class="fa fa-copy"></i></button>
                       </div>
                       </br>
-                    </div>
+                    
+                  </div>
                   </div>
                 </div>
 
@@ -428,14 +430,12 @@
                   <div class="card-body">
                     <h4>Data Cleaning</h4>
                     <p class=" text-center">
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code1"
-                        aria-expanded="false" aria-controls="code1">Show code</button>
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#output1"
-                        aria-expanded="false" aria-controls="output1">Show output</button>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code2"
+                        aria-expanded="false" aria-controls="code2">Show code</button>
                     </p>
                     <div class="row">
                       <div class="col">
-                        <div class="collapse multi-collapse" id="code1">
+                        <div class="collapse multi-collapse" id="code2">
                           <div class="card card-body">
                             <md-block id="code1copy">
                               ```py
@@ -456,147 +456,42 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col">
-                        <div class="collapse multi-collapse" id="output1">
-                          <div class="card card-body">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>Feature</th>
-                                  <th>Data Cleaning </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt;width:62pt" width="83" height="19">brand
-                                  </td>
-                                  <td class="xl158549" style="width:62pt" width="83" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">model</td>
-                                  <td class="xl158549" align="right">95</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">processor_br<span
-                                      style="display:none">and</span></td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">processor_na<span
-                                      style="display:none">me</span></td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">processor_gn<span
-                                      style="display:none">rtn</span></td>
-                                  <td class="xl158549" align="right">239</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">ram_gb</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">ram_type</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">ssd</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">hdd</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">os</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">os_bit</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">graphic_card_<span
-                                      style="display:none">gb</span></td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">weight</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">display_size</td>
-                                  <td class="xl158549" align="right">332</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">warranty</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">Touchscreen</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">msoffice</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">latest_price</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">old_price</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">discount</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">star_rating</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">ratings</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">reviews</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <!--[if supportMisalignedColumns]-->
-                                <tr style="display:none" height="0">
-                                  <td style="width:62pt" width="83"></td>
-                                  <td style="width:62pt" width="83"></td>
-                                </tr>
-                                <!--[endif]-->
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="info alert-info alert-dismissible fade show">
-                      As expected we observe that the features like model, preocessor_gnrtn, display_size contains a lot
-                      of missing values
-                      which is denoted as "Missing" that we need to impute. let's replace it with NaN
-                      <div class="markdown-body">
-                        <md-block id="code2copy">
-                          ```py
-                          data=data.replace('Missing',np.nan)
-                          ```
-                        </md-block>
-                        <button type="button" class="btn btn-primary btn-sm float-right"
-                          onclick="CopyToClipboard('code2copy')"><i class="fa fa-copy"></i></button>
-                      </div>
-                      </br>
-                    </div>
+                  </div>
+                  <div class="card card-body">
+                      We need to change some columns like processor_gnrtn, os_bit, hdd, ssd  to convert them to numeric by removing the unit written after value.
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>  
+
+            <div class="accordion" id="accordionExample3">
+              <div class="card">
+                <div class="card-header" id="headingpros">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne3"
+                      aria-expanded="false" aria-controls="collapseOne3">
+                      Machine lerning modeling 
+                    </button>
+                    <a href="https://dagshub.com/swarmourr/laptop_price/experiments/#/">
+                      <button type="button" class="btn btn-primary float-right"><i class="fa fa-flask ">Experiments</i></button>
+                    </a>
+                  </h2>
+                  <p>We have prepared our data in the previous section. In this part we start the machine learning modeling and find the best algorithm to achieve the best performance. For this we use an automated approach with mlflow as we will see in the rest of this blog</p>
+                </div>
+                <div id="collapseOne3" class="collapse show" aria-labelledby="headingpros"
+                  data-parent="#accordionExample3">
+                  <div class="card-body">
+                    <h4>Model training</h4>
                   </div>
                 </div>
 
-                
+                <div id="collapseOne3" class="collapse show" aria-labelledby="headingpros"
+                  data-parent="#accordionExample3">
+                  safri
               </div>
-            </div>  
+              
+              </div>
 
         </div>
       </div>
