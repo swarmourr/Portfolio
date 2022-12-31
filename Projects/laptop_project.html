@@ -105,6 +105,99 @@
             provisional price of the laptop based on the user's configurations. In addition to the
             data preparation process and model training in this project we are interested in the
             integration of MLops tools from tracking to deployment .</p>
+          <h2>Project Organisation</h2>
+          <div class="accordion" id="accordionExample0">
+            <div class="card">
+              <div class="card-header" id="headingOne0">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne0"
+                    aria-expanded="false" aria-controls="collapseOne0">
+                    Project Organisation
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne0" class="collapse show" aria-labelledby="headingOne0"
+                data-parent="#accordionExample0">
+                <div class="card-body">
+                  <p>To generate the project structure we used <a target="_blank" href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a> as a solution to organize the project well.
+                    cookiecuuter is a tool to create templates for Python projects and use it to generate a project from
+                    the command line. Some templates are published on GitHub, etc . This project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. 
+                    </p>
+                  <div class="card card-body">
+                    <md-block id="code1copy">
+                      ```
+                          ├── LICENSE
+                          ├── Makefile           <- Makefile with commands like `make data` or `make train`
+                          ├── README.md          <- The top-level README for developers using this project.
+                          ├── data
+                          │   ├── external       <- Data from third party sources.
+                          │   ├── interim        <- Intermediate data that has been transformed.
+                          │   ├── processed      <- The final, canonical data sets for modeling.
+                          │   └── raw            <- The original, immutable data dump.
+                          │
+                          ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
+                          │
+                          ├── models             <- Trained and serialized models, model predictions, or model summaries
+                          │
+                          ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
+                          │                         the creator's initials, and a short `-` delimited description, e.g.
+                          │                         `1.0-jqp-initial-data-exploration`.
+                          │
+                          ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+                          │
+                          ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+                          │   └── figures        <- Generated graphics and figures to be used in reporting
+                          │
+                          ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+                          │                         generated with `pip freeze > requirements.txt`
+                          │
+                          ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
+                          ├── src                <- Source code for use in this project.
+                          │   ├── __init__.py    <- Makes src a Python module
+                          │   │
+                          │   ├── data           <- Scripts to download or generate data
+                          │   │   └── make_dataset.py
+                          │   │
+                          │   ├── features       <- Scripts to turn raw data into features for modeling
+                          │   │   └── build_features.py
+                          │   │
+                          │   ├── models         <- Scripts to train models and then use trained models to make
+                          │   │   │                 predictions
+                          │   │   ├── predict_model.py
+                          │   │   └── train_model.py
+                          │   │
+                          │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
+                          │       └── visualize.py
+                          │
+                          └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+                      ```
+                    </md-block>
+                    <button type="button" class="btn btn-primary btn-sm float-right"
+                      onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy code</i></button>
+                  </div>
+                  <div class="accordion" id="accordionExamplearchi">
+            <div class="card">
+              <div class="card-header" id="headingOnearchi">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOnearchi"
+                    aria-expanded="false" aria-controls="collapseOnearchi">
+                    Project Architecture 
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseOnearchi" class="collapse show" aria-labelledby="headingOnearchi" data-parent="#accordionExamplearchi">
+                <div class="card-body">
+                  <center>
+                    <p><img src="projectsImage/archi.png" alt="Italian Trulli"></p></center>
+                </div>
+              </div>
+            </div>
+          </div>    
+                </div>
+              </div>
+            </div>
+          </div>
           <h2 class="mb-3">Data</h2>
           <div class="accordion" id="accordionExample">
             <div class="card">
@@ -234,268 +327,293 @@
               </div>
             </div>
           </div>
-            <div class="accordion" id="accordionExample2">
-              <div class="card">
-                <div class="card-header" id="headingpros">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne2"
-                      aria-expanded="false" aria-controls="collapseOne2">
-                      Data Processing
-                    </button>
-                    <a href="https://dagshub.com/swarmourr/laptop_price/src/main/data/processed">
-                      <button type="button" class="btn btn-primary float-right"><i class="fa fa-download"> Processed
-                          Data </i></button>
-                    </a>
-                  </h2>
-                  <p>From the first few records itself we could notice that :
-                    <ul>
-                      <li>
-                        Under the display_size column there are values which are represented as 'Missing' that can
-                        represent missing value for display_size column or other columns.
-                      </li>
-                      <li>
-                        Convert the columns to numeric by removing the unit written after value
-                      </li>
-                    </ul></p>
-                </div>
-                <div id="collapseOne2" class="collapse show" aria-labelledby="headingpros"
-                  data-parent="#accordionExample2">
-                  <div class="card-body">
-                    <h4>Missing Data</h4>
-            
-                    <p class=" text-center">
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code1"
-                        aria-expanded="false" aria-controls="code1">Show code</button>
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#output1"
-                        aria-expanded="false" aria-controls="output1">Show output</button>
-                    </p>
-                    <div class="row">
-                      <div class="col">
-                        <div class="collapse multi-collapse" id="code1">
-                          <div class="card card-body">
-                            <md-block id="code1copy">
-                              ```py
-                              for column in data.columns:
-                              print(column,(data[column]=='Missing').sum())
-                              ```
-                            </md-block>
-                            <button type="button" class="btn btn-primary btn-sm float-right"
-                              onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy code</i></button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="collapse multi-collapse" id="output1">
-                          <div class="card card-body">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>Feature</th>
-                                  <th>Missing Data</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt;width:62pt" width="83" height="19">brand
-                                  </td>
-                                  <td class="xl158549" style="width:62pt" width="83" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">model</td>
-                                  <td class="xl158549" align="right">95</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">processor_br<span
-                                      style="display:none">and</span></td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">processor_na<span
-                                      style="display:none">me</span></td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">processor_gn<span
-                                      style="display:none">rtn</span></td>
-                                  <td class="xl158549" align="right">239</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">ram_gb</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">ram_type</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">ssd</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">hdd</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">os</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">os_bit</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">graphic_card_<span
-                                      style="display:none">gb</span></td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">weight</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">display_size</td>
-                                  <td class="xl158549" align="right">332</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">warranty</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">Touchscreen</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">msoffice</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">latest_price</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">old_price</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">discount</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">star_rating</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">ratings</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <tr style="height:14.4pt" height="19">
-                                  <td class="xl158549" style="height:14.4pt" height="19">reviews</td>
-                                  <td class="xl158549" align="right">0</td>
-                                </tr>
-                                <!--[if supportMisalignedColumns]-->
-                                <tr style="display:none" height="0">
-                                  <td style="width:62pt" width="83"></td>
-                                  <td style="width:62pt" width="83"></td>
-                                </tr>
-                                <!--[endif]-->
-                              </tbody>
-                            </table>
-                          </div>
+          <div class="accordion" id="accordionExample2">
+            <div class="card">
+              <div class="card-header" id="headingpros">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne2"
+                    aria-expanded="false" aria-controls="collapseOne2">
+                    Data Processing
+                  </button>
+                  <a href="https://dagshub.com/swarmourr/laptop_price/src/main/data/processed">
+                    <button type="button" class="btn btn-primary float-right"><i class="fa fa-download"> Processed
+                        Data </i></button>
+                  </a>
+                </h2>
+                <p>From the first few records itself we could notice that :
+                <ul>
+                  <li>
+                    Under the display_size column there are values which are represented as 'Missing' that can
+                    represent missing value for display_size column or other columns.
+                  </li>
+                  <li>
+                    Convert the columns to numeric by removing the unit written after value
+                  </li>
+                </ul>
+                </p>
+              </div>
+              <div id="collapseOne2" class="collapse show" aria-labelledby="headingpros"
+                data-parent="#accordionExample2">
+                <div class="card-body">
+                  <h4>Missing Data</h4>
+
+                  <p class=" text-center">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code1"
+                      aria-expanded="false" aria-controls="code1">Show code</button>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#output1"
+                      aria-expanded="false" aria-controls="output1">Show output</button>
+                  </p>
+                  <div class="row">
+                    <div class="col">
+                      <div class="collapse multi-collapse" id="code1">
+                        <div class="card card-body">
+                          <md-block id="code1copy">
+                            ```py
+                            for column in data.columns:
+                            print(column,(data[column]=='Missing').sum())
+                            ```
+                          </md-block>
+                          <button type="button" class="btn btn-primary btn-sm float-right"
+                            onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy code</i></button>
                         </div>
                       </div>
                     </div>
-                    <div class="card card-body">
-                      As expected we observe that the features like model, preocessor_gnrtn, display_size contains a lot
-                      of missing values
-                      which is denoted as "Missing" that we need to impute. let's replace it with NaN
-                      <div class="markdown-body">
-                        <center>
+                    <div class="col">
+                      <div class="collapse multi-collapse" id="output1">
+                        <div class="card card-body">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Feature</th>
+                                <th>Missing Data</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt;width:62pt" width="83" height="19">brand
+                                </td>
+                                <td class="xl158549" style="width:62pt" width="83" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">model</td>
+                                <td class="xl158549" align="right">95</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">processor_br<span
+                                    style="display:none">and</span></td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">processor_na<span
+                                    style="display:none">me</span></td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">processor_gn<span
+                                    style="display:none">rtn</span></td>
+                                <td class="xl158549" align="right">239</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">ram_gb</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">ram_type</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">ssd</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">hdd</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">os</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">os_bit</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">graphic_card_<span
+                                    style="display:none">gb</span></td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">weight</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">display_size</td>
+                                <td class="xl158549" align="right">332</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">warranty</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">Touchscreen</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">msoffice</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">latest_price</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">old_price</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">discount</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">star_rating</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">ratings</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <tr style="height:14.4pt" height="19">
+                                <td class="xl158549" style="height:14.4pt" height="19">reviews</td>
+                                <td class="xl158549" align="right">0</td>
+                              </tr>
+                              <!--[if supportMisalignedColumns]-->
+                              <tr style="display:none" height="0">
+                                <td style="width:62pt" width="83"></td>
+                                <td style="width:62pt" width="83"></td>
+                              </tr>
+                              <!--[endif]-->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card card-body">
+                    As expected we observe that the features like model, preocessor_gnrtn, display_size contains a lot
+                    of missing values
+                    which is denoted as "Missing" that we need to impute. let's replace it with NaN
+                    <div class="markdown-body">
+                      <center>
                         <md-block id="code2copy">
                           ```py
                           data=data.replace('Missing',np.nan)
                           ```
                         </md-block>
                       </center>
-                        <button type="button" class="btn btn-primary btn-sm float-right"
-                          onclick="CopyToClipboard('code2copy')"><i class="fa fa-copy"></i></button>
-                      </div>
-                      </br>
-                    
-                  </div>
+                      <button type="button" class="btn btn-primary btn-sm float-right"
+                        onclick="CopyToClipboard('code2copy')"><i class="fa fa-copy"></i></button>
+                    </div>
+                    </br>
+
                   </div>
                 </div>
+              </div>
 
-                <div id="collapseOne2" class="collapse show" aria-labelledby="headingpros"
-                  data-parent="#accordionExample2">
-                  <div class="card-body">
-                    <h4>Data Cleaning</h4>
-                    <p class=" text-center">
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code2"
-                        aria-expanded="false" aria-controls="code2">Show code</button>
-                    </p>
-                    <div class="row">
-                      <div class="col">
-                        <div class="collapse multi-collapse" id="code2">
-                          <div class="card card-body">
-                            <md-block id="code1copy">
-                              ```py
-                              data['ram_gb'] = data['ram_gb'].str.replace("GB", "")
-                              data['ssd'] = data['ssd'].str.replace("GB", "")
-                              data['hdd'] = data['hdd'].str.replace("GB", "")
-                              data['os_bit'] = data['os_bit'].str.replace("-bit", "")
-                              data['processor_gnrtn'] = data['processor_gnrtn'].str.replace("th", "")
-                              data['ram_gb'] = data['ram_gb'].astype('int32')
-                              data['os_bit'] = data['os_bit'].astype('int32')
-                              data['ssd'] = data['ssd'].astype('int32')
-                              data['hdd'] = data['hdd'].astype('int32')
-                              data['processor_gnrtn'] = data['processor_gnrtn'].astype('int32')
-                              ```
-                            </md-block>
-                            <button type="button" class="btn btn-primary btn-sm float-right"
-                              onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy code</i></button>
-                          </div>
+              <div id="collapseOne2" class="collapse show" aria-labelledby="headingpros"
+                data-parent="#accordionExample2">
+                <div class="card-body">
+                  <h4>Data Cleaning</h4>
+                  <p class=" text-center">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code2"
+                      aria-expanded="false" aria-controls="code2">Show code</button>
+                  </p>
+                  <div class="row">
+                    <div class="col">
+                      <div class="collapse multi-collapse" id="code2">
+                        <div class="card card-body">
+                          <md-block id="code1copy">
+                            ```py
+                            data['ram_gb'] = data['ram_gb'].str.replace("GB", "")
+                            data['ssd'] = data['ssd'].str.replace("GB", "")
+                            data['hdd'] = data['hdd'].str.replace("GB", "")
+                            data['os_bit'] = data['os_bit'].str.replace("-bit", "")
+                            data['processor_gnrtn'] = data['processor_gnrtn'].str.replace("th", "")
+                            data['ram_gb'] = data['ram_gb'].astype('int32')
+                            data['os_bit'] = data['os_bit'].astype('int32')
+                            data['ssd'] = data['ssd'].astype('int32')
+                            data['hdd'] = data['hdd'].astype('int32')
+                            data['processor_gnrtn'] = data['processor_gnrtn'].astype('int32')
+                            ```
+                          </md-block>
+                          <button type="button" class="btn btn-primary btn-sm float-right"
+                            onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy code</i></button>
                         </div>
                       </div>
+                    </div>
                   </div>
                   <div class="card card-body">
-                      We need to change some columns like processor_gnrtn, os_bit, hdd, ssd  to convert them to numeric by removing the unit written after value.
+                    We need to change some columns like processor_gnrtn, os_bit, hdd, ssd to convert them to numeric by
+                    removing the unit written after value.
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <h2>Machine learning modeling</h2>
+          <div class="accordion" id="accordionExample3">
+            <div class="card">
+              <div class="card-header" id="headingpros">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne3"
+                    aria-expanded="false" aria-controls="collapseOne3">
+                    Models
+                  </button>
+                  <a href="https://dagshub.com/swarmourr/laptop_price/experiments/#/">
+                    <button type="button" class="btn btn-primary float-right"><i
+                        class="fa fa-flask ">Experiments</i></button>
+                  </a>
+                </h2>
+                <p>We have prepared our data in the previous section. In this part we start the machine learning
+                  modeling and find the best algorithm to achieve the best performance. For this we use an automated
+                  approach with mlflow as we will see in the rest of this blog</p>
               </div>
-            </div>  
-
-            <div class="accordion" id="accordionExample3">
-              <div class="card">
-                <div class="card-header" id="headingpros">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne3"
-                      aria-expanded="false" aria-controls="collapseOne3">
-                      Machine lerning modeling 
-                    </button>
-                    <a href="https://dagshub.com/swarmourr/laptop_price/experiments/#/">
-                      <button type="button" class="btn btn-primary float-right"><i class="fa fa-flask ">Experiments</i></button>
-                    </a>
-                  </h2>
-                  <p>We have prepared our data in the previous section. In this part we start the machine learning modeling and find the best algorithm to achieve the best performance. For this we use an automated approach with mlflow as we will see in the rest of this blog</p>
-                </div>
-                <div id="collapseOne3" class="collapse show" aria-labelledby="headingpros"
-                  data-parent="#accordionExample3">
-                  <div class="card-body">
-                    <h4>Model training</h4>
-                  </div>
-                </div>
-
-                <div id="collapseOne3" class="collapse show" aria-labelledby="headingpros"
-                  data-parent="#accordionExample3">
-                  safri
-              </div>
+              <div id="collapseOne3" class="collapse show" aria-labelledby="headingpros"
+                data-parent="#accordionExample3">
+                <div class="card-body">
+                  <h4>Model training</h4>
+                
               
+                
+               In this project we will train 4 types of regressions models using <a target="_blank" href="https://scikit-learn.org">scikit-learn</a>: 
+               <ul>
+                <li>Lineaire regressions (Lr)</li>
+                <li>Random forest (Rf)</li>
+                <li>Ada boost</li>
+                <li>Gradient boosting</li>
+               </ul>
+               <p class=" text-center">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code3"
+                      aria-expanded="false" aria-controls="code3">Show code</button>
+                  </p>
+               <div class="row">
+                <div class="col">
+                  <div class="collapse multi-collapse" id="code3">
+                    <div class="card card-body">
+                      <md-block id="code1copy">
+                        ```py
+                        from sklearn.linear_model import LinearRegression
+                        from sklearn.ensemble import GradientBoostingRegressor,RandomForestRegressor,AdaBoostRegressor
+                        ```
+            </md-block>
+          </div>
+            </div>
+          </div>
+          </div>
               </div>
-
+          </div></div>
+          </div>
         </div>
       </div>
-    </div>
   </section> <!-- .section -->
 
   <footer class="ftco-footer ftco-section">
