@@ -176,7 +176,12 @@
                     <button type="button" class="btn btn-primary btn-sm float-right"
                       onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy code</i></button>
                   </div>
-                  <div class="accordion" id="accordionExamplearchi">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="accordion" id="accordionExamplearchi">
             <div class="card">
               <div class="card-header" id="headingOnearchi">
                 <h2 class="mb-0">
@@ -190,14 +195,24 @@
                 <div class="card-body">
                   <center>
                     <p><img src="projectsImage/archi.png" alt="Italian Trulli"></p></center>
+                    <p>
+                      The main aim of this projects is to build a full Mlops project using open-source and free  solutions like dagshub , mlflow and git.
+                      for that reason we can distinguish n part of this project:
+                      <ul>
+                        <li> <span style="font-style: italic; font-weight: bold; text-decoration: underline; "> Code Versionning : </span> in this part we will use git server hosted on dagshub. this part manage the code of the api that expose differents models to the consumer and webapp application.</li> 
+                        <li> <span style="font-style: italic; font-weight: bold; text-decoration: underline; "> Model and data versioning :
+                          </span> DVC is a solution built to make ML models shareable and reproducible. It is designed to handle large files,
+                          data sets, machine learning models, and metrics as well as code. it helps to control machine learning models, data
+                          sets and intermediate files version.</li>
+                        <li> <span style="font-style: italic; font-weight: bold; text-decoration: underline; ">  Model tracking : </span>we use two tracker mlflow and dagshub logger in order to track different metrics and models params </li>
+                        <li> <span style="font-style: italic; font-weight: bold; text-decoration: underline; ">  Model deployment :  </span>we use github actions for ci workflow and store docker images for api and webapp in dockerhub for deployment</li>
+                      </ul>
+                    </p>
                 </div>
               </div>
             </div>
           </div>    
-                </div>
-              </div>
-            </div>
-          </div>
+            
           <h2 class="mb-3">Data</h2>
           <div class="accordion" id="accordionExample">
             <div class="card">
@@ -614,6 +629,7 @@
           </div>
         </div>
       </div>
+    </div>
   </section> <!-- .section -->
 
   <footer class="ftco-footer ftco-section">
