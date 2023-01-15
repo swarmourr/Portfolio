@@ -1,0 +1,775 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class=" ftco-animate">
+                <h2 class="mb-3">Overview</h2>
+                <p>We are going to build a project to predict the price of laptops. The problem statement
+                    is: if a user wants to buy a laptop, our application must be compatible to provide a
+                    provisional price of the laptop based on the user's configurations. In addition to the
+                    data preparation process and model training in this project we are interested in the
+                    integration of MLops tools from tracking to deployment .</p>
+                <h2>Project Organisation</h2>
+                <div class="accordion" id="accordionExample0">
+                    <div class="card">
+                        <div class="card-header" id="headingOne0">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne0" aria-expanded="false" aria-controls="collapseOne0">
+                                    Project Organisation
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne0" class="collapse show" aria-labelledby="headingOne0"
+                            data-parent="#accordionExample0">
+                            <div class="card-body">
+                                <p>To generate the project structure we used <a target="_blank"
+                                        href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a> as a
+                                    solution to organize the project well.
+                                    cookiecuuter is a tool to create templates for Python projects and use it to
+                                    generate a project from
+                                    the command line. Some templates are published on GitHub, etc . This project based
+                                    on the <a target="_blank"
+                                        href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data
+                                        science project template</a>.
+                                </p>
+                                <div class="card card-body">
+                                    <md-block id="code1copy">
+                                        ```
+                                        ├── LICENSE
+                                        ├── Makefile <- Makefile with commands like `make data` or `make train` ├──
+                                            README.md <- The top-level README for developers using this project. ├──
+                                            data │ ├── external <- Data from third party sources. │ ├── interim <-
+                                            Intermediate data that has been transformed. │ ├── processed <- The final,
+                                            canonical data sets for modeling. │ └── raw <- The original, immutable data
+                                            dump. │ ├── docs <- A default Sphinx project; see sphinx-doc.org for details
+                                            │ ├── models <- Trained and serialized models, model predictions, or model
+                                            summaries │ ├── notebooks <- Jupyter notebooks. Naming convention is a
+                                            number (for ordering), │ the creator's initials, and a short `-` delimited
+                                            description, e.g. │ `1.0-jqp-initial-data-exploration`. │ ├── references <-
+                                            Data dictionaries, manuals, and all other explanatory materials. │ ├──
+                                            reports <- Generated analysis as HTML, PDF, LaTeX, etc. │ └── figures <-
+                                            Generated graphics and figures to be used in reporting │ ├──
+                                            requirements.txt <- The requirements file for reproducing the analysis
+                                            environment, e.g. │ generated with `pip freeze> requirements.txt`
+                                            │
+                                            ├── setup.py <- makes project pip installable (pip install -e .) so src can
+                                                be imported ├── src <- Source code for use in this project. │ ├──
+                                                __init__.py <- Makes src a Python module │ │ │ ├── data <- Scripts to
+                                                download or generate data │ │ └── make_dataset.py │ │ │ ├── features <-
+                                                Scripts to turn raw data into features for modeling │ │ └──
+                                                build_features.py │ │ │ ├── models <- Scripts to train models and then
+                                                use trained models to make │ │ │ predictions │ │ ├── predict_model.py │
+                                                │ └── train_model.py │ │ │ └── visualization <- Scripts to create
+                                                exploratory and results oriented visualizations │ └── visualize.py │ └──
+                                                tox.ini <- tox file with settings for running tox; see
+                                                tox.readthedocs.io ``` </md-block>
+                                                <button type="button" class="btn btn-primary btn-sm float-right"
+                                                    onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy
+                                                        code</i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" id="accordionExamplearchi">
+                    <div class="card">
+                        <div class="card-header" id="headingOnearchi">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#collapseOnearchi" aria-expanded="false"
+                                    aria-controls="collapseOnearchi">
+                                    Project Architecture
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseOnearchi" class="collapse show" aria-labelledby="headingOnearchi"
+                            data-parent="#accordionExamplearchi">
+                            <div class="card-body">
+                                <center>
+                                    <p><img src="projectsImage/archi.png" alt="Italian Trulli"></p>
+                                </center>
+                                <p>
+                                    The main aim of this projects is to build a Mlops pipeline using open-source and
+                                    free solutions like dagshub, mlflow and git.
+                                    for that reason we can distinguish 4 parts in this project:
+                                <ul>
+                                    <li> <span
+                                            style="font-style: italic; font-weight: bold; text-decoration: underline; ">
+                                            Code Versionning : </span> in this part we will use git server hosted on
+                                        dagshub. this part manage the code of the api that expose differents models to
+                                        the consumer and webapp application.</li>
+                                    <li> <span
+                                            style="font-style: italic; font-weight: bold; text-decoration: underline; ">
+                                            Model and data versioning :
+                                        </span> DVC is a solution built to make ML models shareable and reproducible. It
+                                        is designed to handle large files,
+                                        data sets, machine learning models, and metrics as well as code. it helps to
+                                        control machine learning models, data
+                                        sets and intermediate files version.</li>
+                                    <li> <span
+                                            style="font-style: italic; font-weight: bold; text-decoration: underline; ">
+                                            Model tracking : </span>we use two tracker mlflow and dagshub logger in
+                                        order to track different metrics and models params </li>
+                                    <li> <span
+                                            style="font-style: italic; font-weight: bold; text-decoration: underline; ">
+                                            Model deployment : </span>we use github actions for ci workflow and store
+                                        docker images for api and webapp in dockerhub for deployment</li>
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="mb-3">Data</h2>
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Data Description
+                                </button>
+                                <a
+                                    href="https://dagshub.com/swarmourr/laptop_price/src/main/data/raw/Cleaned_Laptop_data.csv">
+                                    <button type="button" class="btn btn-primary float-right"><i class="fa fa-download">
+                                            Raw
+                                            Data</i></button>
+                                </a>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>The Laptop Dataset contains 23 features/attributes and 896 records. Since only one
+                                    dataset is
+                                    given, we can use this data for training and testing the model. Let's explore
+                                    through the features
+                                    of the Dataset.</p>
+                                <div class="table-responsive table-bordered">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Feature</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>brand </td>
+                                                <td> Manufacturer of Laptop.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> model </td>
+                                                <td> Model name of the Laptop.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> processor_brand </td>
+                                                <td> Manufacturer of the Processor.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> processor_name </td>
+                                                <td> An integral part of the laptop, the processor will determine how
+                                                    powerful your computer
+                                                    is.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> processor_gnrtn </td>
+                                                <td> A geneartion is a group of processors that were launched in some
+                                                    particular years and had
+                                                    significant improvements from processors launched earlier.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ram_gb </td>
+                                                <td> The storage size of ram in GB(Giga Bytes)</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ram_type </td>
+                                                <td> The type of RAM used. This feature contains values such
+                                                    as-DDR4,LPDDR4X,LPDDR4,LPDDR3,DDR3,DDR5</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ssd </td>
+                                                <td> The storage size of SSD.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> hdd </td>
+                                                <td> The storage size of Hard Disk used .</td>
+                                            </tr>
+                                            <tr>
+                                                <td> os </td>
+                                                <td> Operating system such as Windows, DOS, Mac.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> os_bit </td>
+                                                <td> OS Bit with values as 64 bit, 32 bit.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> graphic_card_gb </td>
+                                                <td> The size of graphic card used in the Laptop.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> weight </td>
+                                                <td> The type of Laptop based on weight. This feature contains values
+                                                    such as- Casual,
+                                                    ThinNlight, Gaming</td>
+                                            </tr>
+                                            <tr>
+                                                <td> display_size </td>
+                                                <td> Display size in inches .</td>
+                                            </tr>
+                                            <tr>
+                                                <td> warranty </td>
+                                                <td> Warranty in no. of years .</td>
+                                            </tr>
+                                            <tr>
+                                                <td> Touchscreen </td>
+                                                <td> This feature reveals whether the Laptop has touchscreen feature or
+                                                    not.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> msoffice </td>
+                                                <td> This feature reveals whether the Laptop has MS Office installed or
+                                                    not.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> old_price </td>
+                                                <td> Price of the Laptop when it was released.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> discount </td>
+                                                <td> Discount percentage for price available for the laptop.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> star_rating </td>
+                                                <td> User rating for the laptop with max rating as 5.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ratings </td>
+                                                <td> Total no. of ratings received for the Laptop model.</td>
+                                            </tr>
+                                            <tr>
+                                                <td> reviews </td>
+                                                <td> No. of reviews received for the Laptop model.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="accordionExample2">
+                    <div class="card">
+                        <div class="card-header" id="headingpros">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
+                                    Data Processing
+                                </button>
+                                <a href="https://dagshub.com/swarmourr/laptop_price/src/main/data/processed">
+                                    <button type="button" class="btn btn-primary float-right"><i class="fa fa-download">
+                                            Processed
+                                            Data </i></button>
+                                </a>
+                            </h2>
+                            <p>From the first few records itself we could notice that :
+                            <ul>
+                                <li>
+                                    Under the display_size column there are values which are represented as 'Missing'
+                                    that can
+                                    represent missing value for display_size column or other columns.
+                                </li>
+                                <li>
+                                    Convert the columns to numeric by removing the unit written after value
+                                </li>
+                            </ul>
+                            </p>
+                        </div>
+                        <div id="collapseOne2" class="collapse show" aria-labelledby="headingpros"
+                            data-parent="#accordionExample2">
+                            <div class="card-body">
+                                <h4>Missing Data</h4>
+
+                                <p class=" text-center">
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                        data-target="#code1" aria-expanded="false" aria-controls="code1">Show
+                                        code</button>
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                        data-target="#output1" aria-expanded="false" aria-controls="output1">Show
+                                        output</button>
+                                </p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse" id="code1">
+                                            <div class="card card-body">
+                                                <md-block id="code1copy">
+                                                    ```py
+                                                    for column in data.columns:
+                                                    print(column,(data[column]=='Missing').sum())
+                                                    ```
+                                                </md-block>
+                                                <button type="button" class="btn btn-primary btn-sm float-right"
+                                                    onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy
+                                                        code</i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="collapse multi-collapse" id="output1">
+                                            <div class="card card-body">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Feature</th>
+                                                            <th>Missing Data</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt;width:62pt"
+                                                                width="83" height="19">brand
+                                                            </td>
+                                                            <td class="xl158549" style="width:62pt" width="83"
+                                                                align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">model
+                                                            </td>
+                                                            <td class="xl158549" align="right">95</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                processor_br<span style="display:none">and</span></td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                processor_na<span style="display:none">me</span></td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                processor_gn<span style="display:none">rtn</span></td>
+                                                            <td class="xl158549" align="right">239</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                ram_gb</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                ram_type</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">ssd
+                                                            </td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">hdd
+                                                            </td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">os
+                                                            </td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                os_bit</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                graphic_card_<span style="display:none">gb</span></td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                weight</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                display_size</td>
+                                                            <td class="xl158549" align="right">332</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                warranty</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                Touchscreen</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                msoffice</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                latest_price</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                old_price</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                discount</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                star_rating</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                ratings</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <tr style="height:14.4pt" height="19">
+                                                            <td class="xl158549" style="height:14.4pt" height="19">
+                                                                reviews</td>
+                                                            <td class="xl158549" align="right">0</td>
+                                                        </tr>
+                                                        <!--[if supportMisalignedColumns]-->
+                                                        <tr style="display:none" height="0">
+                                                            <td style="width:62pt" width="83"></td>
+                                                            <td style="width:62pt" width="83"></td>
+                                                        </tr>
+                                                        <!--[endif]-->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-body">
+                                    As expected we observe that the features like model, preocessor_gnrtn, display_size
+                                    contains a lot
+                                    of missing values
+                                    which is denoted as "Missing" that we need to impute. let's replace it with NaN
+                                    <div class="markdown-body">
+                                        <center>
+                                            <md-block id="code2copy">
+                                                ```py
+                                                data=data.replace('Missing',np.nan)
+                                                ```
+                                            </md-block>
+                                        </center>
+                                        <button type="button" class="btn btn-primary btn-sm float-right"
+                                            onclick="CopyToClipboard('code2copy')"><i class="fa fa-copy"></i></button>
+                                    </div>
+                                    </br>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="collapseOne2" class="collapse show" aria-labelledby="headingpros"
+                            data-parent="#accordionExample2">
+                            <div class="card-body">
+                                <h4>Data Cleaning</h4>
+                                <p class=" text-center">
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                        data-target="#code2" aria-expanded="false" aria-controls="code2">Show
+                                        code</button>
+                                </p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse" id="code2">
+                                            <div class="card card-body">
+                                                <md-block id="code1copy">
+                                                    ```py
+                                                    data['ram_gb'] = data['ram_gb'].str.replace("GB", "")
+                                                    data['ssd'] = data['ssd'].str.replace("GB", "")
+                                                    data['hdd'] = data['hdd'].str.replace("GB", "")
+                                                    data['os_bit'] = data['os_bit'].str.replace("-bit", "")
+                                                    data['processor_gnrtn'] = data['processor_gnrtn'].str.replace("th",
+                                                    "")
+                                                    data['ram_gb'] = data['ram_gb'].astype('int32')
+                                                    data['os_bit'] = data['os_bit'].astype('int32')
+                                                    data['ssd'] = data['ssd'].astype('int32')
+                                                    data['hdd'] = data['hdd'].astype('int32')
+                                                    data['processor_gnrtn'] = data['processor_gnrtn'].astype('int32')
+                                                    ```
+                                                </md-block>
+                                                <button type="button" class="btn btn-primary btn-sm float-right"
+                                                    onclick="CopyToClipboard('code1copy')"><i class="fa fa-copy">Copy
+                                                        code</i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-body">
+                                    We need to change some columns like processor_gnrtn, os_bit, hdd, ssd to convert
+                                    them to numeric by
+                                    removing the unit written after value.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2>Machine learning modeling</h2>
+                <div class="accordion" id="accordionExample3">
+                    <div class="card">
+                        <div class="card-header" id="headingpros">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
+                                    Models
+                                </button>
+                                <a href="https://dagshub.com/swarmourr/laptop_price/experiments/#/">
+                                    <button type="button" class="btn btn-primary float-right"><i
+                                            class="fa fa-flask ">Experiments</i></button>
+                                </a>
+                            </h2>
+                            <p>We have prepared our data in the previous section. In this part we start the machine
+                                learning
+                                modeling and find the best algorithm to achieve the best performance. For this we use an
+                                automated
+                                approach with mlflow as we will see in the rest of this blog</p>
+                        </div>
+                        <div id="collapseOne3" class="collapse show" aria-labelledby="headingpros"
+                            data-parent="#accordionExample3">
+                            <div class="card-body">
+                                <h4>Model training</h4>
+                                In this project we will train 4 types of regressions models using <a target="_blank"
+                                    href="https://scikit-learn.org">scikit-learn</a>:
+                                <ul>
+                                    <li>Lineaire regressions (Lr)</li>
+                                    <li>Random forest (Rf)</li>
+                                    <li>Ada boost</li>
+                                    <li>Gradient boosting</li>
+                                </ul>
+                                <p class=" text-center">
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                        data-target="#code3" aria-expanded="false" aria-controls="code3">Show
+                                        code</button>
+                                </p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse" id="code3">
+                                            <div class="card card-body">
+                                                <md-block id="code1copy">
+                                                    ```py
+                                                    from sklearn.linear_model import LinearRegression
+                                                    from sklearn.ensemble import
+                                                    GradientBoostingRegressor,RandomForestRegressor,AdaBoostRegressor
+                                                    ```
+                                                </md-block>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>In order to automate model training and evaluation as well as tracking. For this
+                                    purpose we define two parametric scripts using dvc.
+                                    <br>
+                                    <h6>Training Command</h6>
+                                    <div class="card card-body">
+                                        <md-block>
+                                            ```py
+                                            dvc run -n train_model_lr -d src/models/train_model.py -d model_name -d
+                                            training_data_features -d training_data_labels python
+                                            $command_python_to_execute
+                                            ```
+                                        </md-block>
+                                    </div>
+                                    <br />
+                                    <h6>Evaluating/Tracking Command</h6>
+                                    <div class="card card-body">
+                                        <md-block>
+                                            ```py
+                                            dvc run -n evalutaion_test -d src/models/predict_model.py -d
+                                            testing_data_features -d testing_data_labels -M json_file_scores python
+                                            $command_python_to_execut ```
+                                            ```
+                                        </md-block>
+                                    </div>
+                                    <p class=" text-center">
+                                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                            data-target="#code4" aria-expanded="false" aria-controls="code4">Train
+                                            command example</button>
+                                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                            data-target="#code5" aria-expanded="false" aria-controls="code5">Train
+                                            script example</button>
+                                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                            data-target="#code6" aria-expanded="false" aria-controls="code6">Test
+                                            command example</button>
+                                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                            data-target="#code7" aria-expanded="false" aria-controls="code7">Test script
+                                            example</button>
+                                    </p>
+                                </div>
+
+                                <div class="collapse multi-collapse" id="code4">
+                                    <div class="card card-body">
+                                        <md-block>
+                                            ```py
+                                            dvc run -n train_model_lr
+                                            -d src/models/train_model.py
+                                            -d sklearn.linear_model.LinearRegression
+                                            -d data/processed/train_data_features.csv
+                                            -d data/processed/train_data_labels.csv
+                                            python3 src/models/train_model.py sklearn.linear_model.LinearRegression
+                                            data/processed/train_data_features.csv data/processed/train_data_labels.csv
+                                            ```
+                                        </md-block>
+                                    </div>
+                                </div>
+
+                                <div class="collapse multi-collapse" id="code6">
+                                    <div class="card card-body">
+                                        <md-block>
+                                            ```py
+                                            dvc run -n train_model_lr
+                                            -d src/models/predict_model.py
+                                            -d data/processed/train_data_features.csv
+                                            -d data/processed/test_data_labels.csv
+                                            -M scores.json
+                                            python3 src/models/predict_model.py models/linearregression.pkl
+                                            data/processed/test_data_features.csv data/processed/test_data_labels.csv
+                                            ```
+                                            ```
+                                        </md-block>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col collapse multi-collapse" id="code5">
+                                        <div class="card card-body">
+                                            <md-block>
+                                                ```py
+                                                import importlib
+                                                import sys
+                                                import joblib
+                                                import pandas as pd
+
+
+
+                                                class train():
+
+                                                def __init__(self) -> None:
+                                                pass
+
+                                                def my_import(self, name):
+                                                components = name.split('.')
+                                                module=".".join(components[:-1])
+                                                mod = __import__(module)
+                                                for comp in components[1:]:
+                                                mod = getattr(mod, comp)
+                                                return mod
+
+                                                def save_model(self, model):
+                                                model_file = str(type(model).__name__).lower()
+                                                joblib.dump(model, f'models/{model_file}.pkl')
+
+                                                def train(self,model,train_features,train_label):
+                                                train_data=pd.read_csv(train_features)
+                                                train_label=pd.read_csv(train_label)
+                                                model.fit(train_data,train_label)
+                                                self.save_model(model)
+
+
+                                                arguments=sys.argv
+                                                print(arguments)
+                                                train_class=train()
+                                                my_module = train_class.my_import(arguments[1])
+                                                train_class.train(my_module(),arguments[2],arguments[3])
+
+                                                ```
+                                            </md-block>
+                                        </div>
+                                    </div>
+
+                                    <div class="col collapse multi-collapse" id="code7">
+                                        <div class="card card-body">
+                                            <md-block>
+                                                ```py
+                                                import pandas as pd
+                                                import time
+                                                import joblib,json
+                                                timestr = time.strftime("%Y%m%d-%H%M%S")
+                                                import os,sys
+                                                from sklearn.metrics import mean_absolute_error
+                                                from sklearn.metrics import mean_squared_error
+                                                import dagshub
+                                                import mlflow
+                                                import mlflow.sklearn
+
+
+                                                from sklearn.metrics import accuracy_score,f1_score,precision_score
+                                                os.makedirs("models", exist_ok=True)
+
+                                                mlflow.set_tracking_uri("https://dagshub.com/swarmourr/laptop_price.mlflow")
+                                                os.environ["MLFLOW_TRACKING_USERNAME"] = "Username"
+                                                os.environ["MLFLOW_TRACKING_PASSWORD"] = "Password"
+
+                                                # Load Datasets
+                                                def load_data(data):
+                                                df = pd.read_csv(data)
+                                                return df
+
+                                                def load_model(model_file):
+                                                model = joblib.load(model_file)
+                                                return model
+
+
+                                                def evaluate_model(ml_pipe,x_test,y_test):
+                                                with dagshub.dagshub_logger() as logger:
+                                                print(ml_pipe)
+                                                logger.log_hyperparams(model_class=str(type(ml_pipe).__name__).lower())
+                                                logger.log_hyperparams({'model': ml_pipe.get_params()})
+                                                y_pred=ml_pipe.predict(x_test)
+                                                train_metrics={'model_name':type(ml_pipe).__name__,'MAE':mean_absolute_error(y_test,y_pred),'MSE':mean_squared_error(y_test,y_pred)}
+                                                logger.log_metrics({f'train__{k}': v for k,v in train_metrics.items()})
+                                                return train_metrics
+
+
+                                                def evaluate_track_mlflow(ml_pipe,x_test,y_test):
+                                                with mlflow.start_run():
+                                                y_pred=ml_pipe.predict(x_test)
+                                                train_metrics={'model_name':type(ml_pipe).__name__,'MAE':mean_absolute_error(y_test,y_pred),'MSE':mean_squared_error(y_test,y_pred)}
+                                                mlflow.log_metric("mse", mean_squared_error(y_test,y_pred))
+                                                mlflow.log_metric("mae", mean_absolute_error(y_test,y_pred))
+                                                mlflow.sklearn.log_model(ml_pipe, "model")
+                                                #register_models
+                                                if train_metrics["MAE"]< 0.5: print("Registring the models")
+                                                    mlflow.sklearn.log_model( sk_model=model, artifact_path="model" ,
+                                                    registered_model_name=train_metrics["model_name"], ) # CLI
+                                                    model_file=sys.argv[1] x_test_file=sys.argv[2]
+                                                    y_test_file=sys.argv[3] track=sys.argv[4]
+                                                    x_test=load_data(x_test_file) y_test=load_data(y_test_file)
+                                                    model=load_model(model_file) if track=="mlflow" : print("Tracking
+                                                    with mlflow") evaluate_track_mlflow(model,x_test,y_test)
+                                                    print("Evaluating Model")
+                                                    results=evaluate_model(model,x_test,y_test) print(results)
+                                                    print(mlflow.get_artifact_uri()) with
+                                                    open("scores_"+results["model_name"].lower()+".json", "w" ) as fp:
+                                                    json.dump(results , fp) ``` </md-block>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!-- .section -->

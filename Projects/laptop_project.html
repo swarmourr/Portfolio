@@ -584,216 +584,310 @@
                     Models
                   </button>
                   <a href="https://dagshub.com/swarmourr/laptop_price/experiments/#/">
-                    <button type="button" class="btn btn-primary float-right"><i
-                        class="fa fa-flask ">Experiments</i></button>
+                    <button type="button" class="btn btn-primary float-right"><i class="fa fa-flask ">Experiments</i></button>
                   </a>
                 </h2>
                 <p>We have prepared our data in the previous section. In this part we start the machine learning
                   modeling and find the best algorithm to achieve the best performance. For this we use an automated
                   approach with mlflow as we will see in the rest of this blog</p>
               </div>
-              <div id="collapseOne3" class="collapse show" aria-labelledby="headingpros"
-                data-parent="#accordionExample3">
+              <div id="collapseOne3" class="collapse show" aria-labelledby="headingpros" data-parent="#accordionExample3">
                 <div class="card-body">
                   <h4>Model training</h4>
-               In this project we will train 4 types of regressions models using <a target="_blank" href="https://scikit-learn.org">scikit-learn</a>: 
-               <ul>
-                <li>Lineaire regressions (Lr)</li>
-                <li>Random forest (Rf)</li>
-                <li>Ada boost</li>
-                <li>Gradient boosting</li>
-               </ul>
-               <p class=" text-center">
+                  In this project we will train 4 types of regressions models using <a target="_blank"
+                    href="https://scikit-learn.org">scikit-learn</a>:
+                  <ul>
+                    <li>Lineaire regressions (Lr)</li>
+                    <li>Random forest (Rf)</li>
+                    <li>Ada boost</li>
+                    <li>Gradient boosting</li>
+                  </ul>
+                  <p class=" text-center">
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code3"
                       aria-expanded="false" aria-controls="code3">Show code</button>
                   </p>
-               <div class="row">
-                <div class="col">
-                  <div class="collapse multi-collapse" id="code3">
+                  <div class="row">
+                    <div class="col">
+                      <div class="collapse multi-collapse" id="code3">
+                        <div class="card card-body">
+                          <md-block id="code1copy">
+                            ```py
+                            from sklearn.linear_model import LinearRegression
+                            from sklearn.ensemble import GradientBoostingRegressor,RandomForestRegressor,AdaBoostRegressor
+                            ```
+                          </md-block>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>In order to automate model training and evaluation as well as tracking. For this purpose we define two
+                    parametric scripts using dvc.
+                    <br>
+                    <h6>Training Command</h6>
                     <div class="card card-body">
-                      <md-block id="code1copy">
+                      <md-block>
                         ```py
-                        from sklearn.linear_model import LinearRegression
-                        from sklearn.ensemble import GradientBoostingRegressor,RandomForestRegressor,AdaBoostRegressor
+                        dvc run -n train_model_lr 
+                        -d src/models/train_model.py 
+                        -d model_name -d training_data_features 
+                        -d training_data_labels 
+                        python $command_python_to_execute
                         ```
-            </md-block>
-          </div>
+                      </md-block>
+                    </div>
+                    <br />
+                    <h6>Evaluating/Tracking Command</h6>
+                    <div class="card card-body">
+                      <md-block>
+                        ```py
+                        dvc run -n evalutaion_test 
+                        -d src/models/predict_model.py # Scipt used to test the models and store tracking metrics 
+                        -d testing_data_features  
+                        -d testing_data_labels
+                        -M json_file_scores 
+                        python $command_python_to_execut 
+                        ```
+                      </md-block>
+                    </div>
+                    <md-block>
+                      > **_NOTE :_** This command will automatically create a dvc.yaml describe different run command as a pipeline.
+                    </md-block>
+                    <p class=" text-center">
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code4"
+                        aria-expanded="false" aria-controls="code4">Train command example</button>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code5"
+                        aria-expanded="false" aria-controls="code5">Train script example</button>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code6"
+                        aria-expanded="false" aria-controls="code6">Test command example</button>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code7"
+                        aria-expanded="false" aria-controls="code7">Test script example</button>
+                    </p>
+                  </div>
+          
+                  <div class="collapse multi-collapse" id="code4">
+                    <div class="card card-body">
+                      <md-block>
+                        ```py
+                        dvc run -n train_model_lr
+                        -d src/models/train_model.py
+                        -d sklearn.linear_model.LinearRegression
+                        -d data/processed/train_data_features.csv
+                        -d data/processed/train_data_labels.csv
+                        python3 src/models/train_model.py sklearn.linear_model.LinearRegression
+                        data/processed/train_data_features.csv
+                        data/processed/train_data_labels.csv
+                        ```
+                      </md-block>
+                    </div>
+                  </div>
+                  <div class="collapse multi-collapse" id="code6">
+                    <div class="card card-body">
+                      <md-block>
+                        ```py
+                        dvc run -n train_model_lr 
+                        -d src/models/predict_model.py 
+                        -d data/processed/train_data_features.csv 
+                        -d data/processed/test_data_labels.csv 
+                        -M scores.json 
+                        python src/models/predict_model.py models/linearregression.pkl 
+                        data/processed/test_data_features.csv 
+                        data/processed/test_data_labels.csv
+                        ```
+                      </md-block>
+                    </div>
+                  </div>
+          
+                  <div class="collapse multi-collapse" id="code5">
+                    <div class="card card-body">
+                      <md-block>
+                        ```py
+                        import importlib
+                        import sys
+                        import joblib
+                        import pandas as pd
+          
+          
+          
+                        class train():
+          
+                        def __init__(self) -> None:
+                        pass
+          
+                        def my_import(self, name):
+                        components = name.split('.')
+                        module=".".join(components[:-1])
+                        mod = __import__(module)
+                        for comp in components[1:]:
+                        mod = getattr(mod, comp)
+                        return mod
+          
+                        def save_model(self, model):
+                        model_file = str(type(model).__name__).lower()
+                        joblib.dump(model, f'models/{model_file}.pkl')
+          
+                        def train(self,model,train_features,train_label):
+                        train_data=pd.read_csv(train_features)
+                        train_label=pd.read_csv(train_label)
+                        model.fit(train_data,train_label)
+                        self.save_model(model)
+          
+          
+                        arguments=sys.argv
+                        print(arguments)
+                        train_class=train()
+                        my_module = train_class.my_import(arguments[1])
+                        train_class.train(my_module(),arguments[2],arguments[3])
+          
+                        ```
+                      </md-block>
+                    </div>
+                  </div>
+          
+                  <div class="col collapse multi-collapse" id="code7">
+                    <div class="card card-body">
+                      <md-block>
+                        ```py
+                        import pandas as pd
+                        import time
+                        import joblib,json
+                        timestr = time.strftime("%Y%m%d-%H%M%S")
+                        import os,sys
+                        from sklearn.metrics import mean_absolute_error
+                        from sklearn.metrics import mean_squared_error
+                        import dagshub
+                        import mlflow
+                        import mlflow.sklearn
+          
+          
+                        from sklearn.metrics import accuracy_score,f1_score,precision_score
+                        os.makedirs("models", exist_ok=True)
+          
+                        mlflow.set_tracking_uri("https://dagshub.com/swarmourr/laptop_price.mlflow")
+                        os.environ["MLFLOW_TRACKING_USERNAME"] = "Username"
+                        os.environ["MLFLOW_TRACKING_PASSWORD"] = "Password"
+          
+                        # Load Datasets
+                        def load_data(data):
+                          df = pd.read_csv(data)
+                          return df
+          
+                        def load_model(model_file):
+                          model = joblib.load(model_file)
+                          return model
+          
+          
+                        def evaluate_model(ml_pipe,x_test,y_test):
+                          with dagshub.dagshub_logger() as logger:
+                          print(ml_pipe)
+                          logger.log_hyperparams(model_class=str(type(ml_pipe).__name__).lower())
+                          logger.log_hyperparams({'model': ml_pipe.get_params()})
+                          y_pred=ml_pipe.predict(x_test)
+                          train_metrics={'model_name':type(ml_pipe).__name__,'MAE':mean_absolute_error(y_test,y_pred),'MSE':mean_squared_error(y_test,y_pred)}
+                          logger.log_metrics({f'train__{k}': v for k,v in train_metrics.items()})
+                          return train_metrics
+          
+          
+                        def evaluate_track_mlflow(ml_pipe,x_test,y_test):
+                          with mlflow.start_run():
+                          y_pred=ml_pipe.predict(x_test)
+                          train_metrics={'model_name':type(ml_pipe).__name__,'MAE':mean_absolute_error(y_test,y_pred),'MSE':mean_squared_error(y_test,y_pred)}
+                          mlflow.log_metric("mse", mean_squared_error(y_test,y_pred))
+                          mlflow.log_metric("mae", mean_absolute_error(y_test,y_pred))
+                          mlflow.sklearn.log_model(ml_pipe, "model")
+                          #register_models
+                          if train_metrics["MAE"]< 0.5: 
+                            print("Registring the models") mlflow.sklearn.log_model( sk_model=model,
+                            artifact_path="model" , registered_model_name=train_metrics["model_name"], ) # CLI
+                            model_file=sys.argv[1] x_test_file=sys.argv[2] y_test_file=sys.argv[3] track=sys.argv[4]
+                            x_test=load_data(x_test_file) y_test=load_data(y_test_file) model=load_model(model_file) if
+                            track=="mlflow" : print("Tracking with mlflow") evaluate_track_mlflow(model,x_test,y_test)
+                            print("Evaluating Model") results=evaluate_model(model,x_test,y_test) print(results)
+                            print(mlflow.get_artifact_uri()) with open("scores_"+results["model_name"].lower()+".json", "w" ) as fp:
+                            json.dump(results , fp) 
+                          ``` 
+                        </md-block>
+              
+                    </div>
+                  </div>
+                  In the testing script we use two solution for logging*
+                  <ul>
+                    <li>Dagshub logger in order to log all metrics about the performences of the models</li>
+                    <li>MLflow for tracking and models management</li>
+                  </ul>
+                   The results of evalution step can be used by to mlflow server to deploy the best version of differents trained models based on threshold of MAE metric
+                  <md-block>
+                    > **_NOTE :_** Using DVC helps us to reproduce complete or partial pipelines by running their stages as needed in the correct order. This pipeline described in 
+                    the dvc.yaml file that we can modify according to our vision. For that purpose we can reproduce the experiences using the command : 
+                  </md-block>
+                  <div class="card card-body">
+                  <md-block>
+                    ```bash
+                      dvc repro 
+                    ```
+                  </md-block>
+                </div>
+                  <p class=" text-center">
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code8"
+                        aria-expanded="false" aria-controls="code8">Show dvc file</button>
+                  </p>
+                    
+                    <div class="col collapse multi-collapse" id="code8">
+                      <div class="card card-body">
+                        <md-block>
+                          ```yaml
+                          stages:
+                            prepare_data:
+                              cmd: python3 src/features/build_features.py data/raw/Cleaned_Laptop_data.csv
+                              deps:
+                              - data/raw/Cleaned_Laptop_data.csv
+                              - src/features/build_features.py
+                            train_model:
+                              foreach:
+                              - model: sklearn.linear_model.LinearRegression
+                              - model: sklearn.ensemble.GradientBoostingRegressor
+                              - model: sklearn.ensemble.AdaBoostRegressor
+                              do:
+                                cmd: python3 src/models/train_model.py ${item.model} data/processed/train_data_features.csv
+                                  data/processed/train_data_labels.csv
+                                deps:
+                                - data/processed/train_data_features.csv
+                                - data/processed/train_data_labels.csv
+                                - src/models/train_model.py
+
+                            evalutaion_test:
+                              foreach:
+                              - model: linearregression
+                              - model: adaboostregressor
+                              - model: gradientboostingregressor
+                              do:
+                                cmd: python3 src/models/predict_model.py models/${item.model}.pkl data/processed/test_data_features.csv
+                                        data/processed/test_data_labels.csv mlflow
+                                deps:
+                                  - data/processed/test_data_features.csv
+                                  - data/processed/test_data_labels.csv
+                                  - src/models/predict_model.py
+                                metrics:
+                                  - scores_${item.model}.json:
+                                      cache: true
+                           
+                            ``` 
+                          </md-block>
+                
+                      </div>
+                    </div>
+                  
+
+                  
+                </div>
+          
+              </div>
+          
+          
             </div>
           </div>
           </div>
-          <div>In order to automate model training and evaluation as well as tracking. For this purpose we define two parametric scripts using dvc.
-              <div class="card card-body">             
-            <md-block>
-              ```py
-              dvc run -n train_model_lr -d src/models/train_model.py -d model_name -d training_data_features -d training_data_labels $command_python_to_execute
-              ```
-            </md-block>
           </div>
-            <p class=" text-center">
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#code4"
-                aria-expanded="false" aria-controls="code4">Show Example</button>
-            </p>
-            <div class="collapse multi-collapse" id="code4">
-              <div class="card card-body">
-                <md-block>
-                  ```py
-                  dvc run -n train_model_lr 
-                          -d src/models/train_model.py 
-                          -d sklearn.linear_model.LinearRegression 
-                          -d data/processed/train_data_features.csv 
-                          -d data/processed/train_data_labels.csv 
-                          python3 src/models/train_model.py sklearn.linear_model.LinearRegression data/processed/train_data_features.csv data/processed/train_data_labels.csv
-                  ```
-                </md-block>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="card card-body">
-          <md-block>
-            ```py
-            import importlib
-            import sys
-            import joblib
-            import pandas as pd
-        
-        
-        
-            class train():
-        
-                def __init__(self) -> None:
-                    pass
-        
-                def my_import(self, name):
-                    components = name.split('.')
-                    module=".".join(components[:-1])
-                    mod = __import__(module)
-                    for comp in components[1:]:
-                        mod = getattr(mod, comp)
-                    return mod
-        
-                def save_model(self, model):
-                    model_file = str(type(model).__name__).lower()
-                    joblib.dump(model, f'models/{model_file}.pkl')
-        
-                def  train(self,model,train_features,train_label):
-                    train_data=pd.read_csv(train_features)
-                    train_label=pd.read_csv(train_label)
-                    model.fit(train_data,train_label)
-                    self.save_model(model)
-        
-        
-            arguments=sys.argv
-            print(arguments)
-            train_class=train()
-            my_module = train_class.my_import(arguments[1])
-            train_class.train(my_module(),arguments[2],arguments[3])
-        
-            ```
-          </md-block>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card card-body">
-          <md-block>
-            ```py
-            import pandas as pd
-            import time
-            import joblib,json
-            timestr = time.strftime("%Y%m%d-%H%M%S")
-            import os,sys
-            from sklearn.metrics import mean_absolute_error
-            from sklearn.metrics import mean_squared_error
-            import dagshub
-            import mlflow
-            import mlflow.sklearn
-
-
-            from sklearn.metrics import accuracy_score,f1_score,precision_score
-            os.makedirs("models", exist_ok=True)
-
-            mlflow.set_tracking_uri("https://dagshub.com/swarmourr/laptop_price.mlflow")
-            os.environ["MLFLOW_TRACKING_USERNAME"] = "swarmourr"
-            os.environ["MLFLOW_TRACKING_PASSWORD"] = "29ce4ab11ce94a326446a71fc707b35baff458be"
-
-            # Load Datasets
-            def load_data(data):
-                df = pd.read_csv(data)
-                return df
-
-            def load_model(model_file):
-                model = joblib.load(model_file)
-                return model
-
-
-            def evaluate_model(ml_pipe,x_test,y_test):
-                with dagshub.dagshub_logger() as logger:
-                    print(ml_pipe)
-                    logger.log_hyperparams(model_class=str(type(ml_pipe).__name__).lower())
-                    logger.log_hyperparams({'model': ml_pipe.get_params()})
-                    y_pred=ml_pipe.predict(x_test)
-                    train_metrics={'model_name':type(ml_pipe).__name__,'MAE':mean_absolute_error(y_test,y_pred),'MSE':mean_squared_error(y_test,y_pred)}
-                    logger.log_metrics({f'train__{k}': v for k,v in train_metrics.items()}) 
-                    return train_metrics
-
-
-            def evaluate_track_mlflow(ml_pipe,x_test,y_test):
-                with mlflow.start_run():
-                    y_pred=ml_pipe.predict(x_test)
-                    train_metrics={'model_name':type(ml_pipe).__name__,'MAE':mean_absolute_error(y_test,y_pred),'MSE':mean_squared_error(y_test,y_pred)}
-                    mlflow.log_metric("mse", mean_squared_error(y_test,y_pred))
-                    mlflow.log_metric("mae", mean_absolute_error(y_test,y_pred))
-                    mlflow.sklearn.log_model(ml_pipe, "model")
-                    #register_models
-                    if train_metrics["MAE"]< 0.5:
-                        print("Registring the models")
-                        mlflow.sklearn.log_model(
-                            sk_model=model,
-                            artifact_path="model",
-                            registered_model_name=train_metrics["model_name"],
-                            )
-
-
-            # CLI
-            model_file = sys.argv[1]
-            x_test_file = sys.argv[2]
-            y_test_file = sys.argv[3]
-            track=sys.argv[4]
-
-            x_test = load_data(x_test_file)
-            y_test = load_data(y_test_file)
-            model = load_model(model_file)
-
-            if track=="mlflow":
-                print("Tracking with mlflow")
-                evaluate_track_mlflow(model,x_test,y_test)
-
-            print("Evaluating Model")
-            results = evaluate_model(model,x_test,y_test)
-            print(results)
-            print(mlflow.get_artifact_uri())
-
-
-
-            with open("scores_"+results["model_name"].lower()+".json", "w") as fp:
-                json.dump(results , fp) 
-        
-            ```
-          </md-block>
-        </div>
-      </div>
-    </div>
-    
-      </div>
-            
-          </div>
-              </div>
-          </div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> <!-- .section -->
+          </section> <!-- .section -->
 
   <footer class="ftco-footer ftco-section">
     <div class="container">
