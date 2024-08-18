@@ -28,6 +28,10 @@
 
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
 
+	<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+
+	<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -88,8 +92,8 @@
 
 						<div class="img d-flex align-self-stretch align-items-center"
 							style="background-image:url(images/about.png);">
-						</div>
 
+						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 pl-md-5 py-5">
@@ -100,9 +104,7 @@
 							<ul class="about-info mt-4 px-md-0 px-2">
 								<li class="d-flex"><span>Name:</span> <span>Hamza SAFRI</span></li>
 								<li class="d-flex"><span>Date of birth:</span> <span>February 09, 1996</span></li>
-								<li class="d-flex"><span>Address:</span> <span>3 Rue emile guyou apt 166 ,Toulouse
-										France </span></li>
-								<li class="d-flex"><span>Zip code:</span> <span>31400</span></li>
+								<li class="d-flex"><span>Address:</span> <span>Toulouse,France </span></li>
 								<li class="d-flex"><span>Email:</span> <span>safrihamzaa@gmail.com</span></li>
 								<li class="d-flex"><span>Phone: </span> <span>+33 7 73393465</span></li>
 							</ul>
@@ -206,20 +208,20 @@
 						</div>
 
 					</div>
-					
+
 
 					<div id="page-2" class="page two">
 						<h2 class="heading">Experience</h2>
-							<!-- Nex EXPERIENCE -->
-							<div class="resume-wrap d-flex ftco-animate">
-								<div class="text pl-3">
-									<span class="date">Apr. 2023 - Oct. 2023</span>
-									<h2>Phd Student</h2>
-									<span class="position">USC Information Sciences Institute</span>
-									<p>Federated Learning for Edge Computing using workflows</p>
-									<p><a class="btn btn-primary" data-toggle="collapse" href="#expisi" role="button"
+						<!-- Nex EXPERIENCE -->
+						<div class="resume-wrap d-flex ftco-animate">
+							<div class="text pl-3">
+								<span class="date">Apr. 2023 - Oct. 2023</span>
+								<h2>Phd Student</h2>
+								<span class="position">USC Information Sciences Institute</span>
+								<p>Workflow management system for ML</p>
+								<p><a class="btn btn-primary" data-toggle="collapse" href="#expisi" role="button"
 										aria-expanded="false" aria-controls="collapseExample">
-										Main Actions
+										Federated Learning for Edge Computing using workflows
 									</a></p>
 								<div class="collapse" id="expisi">
 									<ul>
@@ -228,11 +230,68 @@
 										<li>Models’ performance evaluation</li>
 										<li>Pegasus performance evaluation for Federated Learning workflows</li>
 									</ul>
-								</div>
 									<h6>Keywords : Federated Learning,Edge Computing, Workflow, Pegasus-WMS, DAGS</h6>
 								</div>
+
+								<p><a class="btn btn-primary" data-toggle="collapse" href="#expisiml" role="button"
+										aria-expanded="false" aria-controls="collapseExample">
+										MLOps Workflow Management: Tracking ML workflows with Tags
+									</a></p>
+								<div class="collapse" id="expisiml">
+									<ul>
+										<li>Tagging System:
+											<ul>
+												<li>Create a tagging system to track the ML workflow.</li>
+												<li>Use tags like <code>track_input</code> and
+													<code>track_workflow</code> to identify and manage different
+													components and stages of the workflow.
+												</li>
+											</ul>
+										</li>
+										<li>Integration:
+											<ul>
+												<li>Establish a robust connection between various tools:
+													<ul>
+														<li><strong>Workflow Management Systems (WMS)</strong> and
+															<strong>MLflow</strong> for experiment tracking.
+														</li>
+														<li><strong>Git</strong> for code versioning and management.
+														</li>
+														<li><strong>Remote Storage</strong> solutions, such as cloud
+															storage buckets (e.g., AWS S3, Google Cloud Storage) for
+															file storage.</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li>Reproducibility:
+											<ul>
+												<li>Ensure reproducibility of the workflow by using unique workflow IDs.
+												</li>
+												<li>These IDs should link all related components, such as code versions,
+													experiment metadata, and data files, to facilitate consistent and
+													traceable execution of the workflow.</li>
+											</ul>
+										</li>
+									</ul>
+									<h6>Keywords : MLOPS ,Edge Computing, Workflow, Pegasus-WMS, DAGS</h6>
+									<br>
+									<a href="https://github.com/swarmourr/pegasus"
+										style="display: inline-block; width: 50%; text-align: center; margin-right: 10px;"><img
+											src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/swarmourr/pegasus.png"
+											width="350px"></a>
+									<a href="https://swarmourr.github.io/pegasus/" target="_blank"
+										style="display: inline-block; width: 5%; text-align: center;"><img
+											src="images/doc.png" width="370px"></a>
+
+
+								</div>
+
+
 							</div>
-							<!--end new expeirence isi -->
+
+						</div>
+						<!--end new expeirence isi -->
 						<div class="resume-wrap d-flex ftco-animate">
 							<div class="text pl-3">
 								<span class="date">Since 2021</span>
@@ -330,7 +389,6 @@
 								<a href="https://github.com/swarmourr/nfv_monitoring-"><img
 										src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/swarmourr/nfv_monitoring-.png"
 										width="460px"></a>
-
 							</div>
 
 
@@ -720,6 +778,9 @@
 										<a class="btn btn-primary float-right" data-toggle="collapse" href="#pub1cit"
 											role="button" aria-expanded="false" aria-controls="collapseExample">
 											Cite </a>
+										<a class="btn btn-primary float-right" href="file/papers/Papier_BL__1_.pdf"
+											role="button" aria-expanded="false" aria-controls="collapseExample"
+											target="_blank">PDF</a>
 									</p>
 									<br />
 									<div class="collapse" id="pub1">
@@ -790,6 +851,10 @@
 										<a class="btn btn-primary float-right" data-toggle="collapse" href="#pub2cit"
 											role="button" aria-expanded="false" aria-controls="collapseExample">
 											Cite </a>
+										<a class="btn btn-primary float-right" href="file/papers/Demo_icdcs_2022.pdf"
+											role="button" aria-expanded="false" aria-controls="collapseExample"
+											target="_blank">PDF</a>
+
 									</p>
 									<br />
 
@@ -829,6 +894,60 @@
 									</div>
 
 								</ul>
+								<h2>2024</h2>
+								<ul class="pub">
+									<li> <span class="cconf">■</span> H. SAFRI,G. Papadimitriou, F. DESPREZ, and E.
+										Deelman <span class="papertitle"><a href="#">
+												A Workflow Management System Approach To Federated Learning: Application
+												to Industry 4.0</a> presented at
+										</span>. <a href="http://dcoss.org/dcoss24/">20th International Conference on
+											Distributed Computing in Smart Systems and the Internet of Things
+											(DCOSS-IoT)</a>, 2024.<br />
+
+									</li> <br />
+									<p><a class="btn btn-primary float-right" data-toggle="collapse" href="#pub3"
+											role="button" aria-expanded="false" aria-controls="collapseExample">
+											Abstract
+										</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a class="btn btn-primary float-right" data-toggle="collapse" href="#pub3cit"
+											role="button" aria-expanded="false" aria-controls="collapseExample">
+											Cite </a>
+										<a class="btn btn-primary float-right" href="file/papers/dcoss.pdf"
+											role="button" aria-expanded="false" aria-controls="collapseExample"
+											target="_blank">PDF</a>
+									</p>
+									<br />
+									<div class="collapse" id="pub3">
+										<div class="card bg-dark text-white">
+											<div class="card-body">
+												<p align="justify">
+													Federated Learning (FL) combined with the Industrial Internet of
+													Things (IIoT) enhances decision-making in industrial settings by
+													leveraging decentralized machine learning (ML) to ensure data
+													privacy, optimize edge computing, and facilitate adaptive model
+													training. However, implementing FL and IIoT presents challenges due
+													to distributed architectures, including communication, data
+													transfer, and file management across wide area networks. This paper
+													addresses these challenges by introducing FL and Clustered FL (CFL)
+													models using Pegasus workflows. Evaluated with real data from
+													airport baggage conveyor systems, it offers practical insights into
+													FL's application in IIoT environments, contributing to advancements
+													in intelligent industrial decision-making.
+												</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="collapse" id="pub3cit">
+										<p align="justify">
+											Safri, H., Papadimitriou, G., Desprez, F., & Deelman, E. (2024, April). A
+											Workflow Management System Approach To Federated Learning: Application to
+											Industry 4.0. In 2024 20th International Conference on Distributed Computing
+											in Smart Systems and the Internet of Things (DCOSS-IoT) (pp. 259-263). IEEE.
+										</p>
+									</div>
+
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -841,10 +960,16 @@
 								<h2>Federated Learning</h2>
 								<ul>
 									<li>
-										Talk at <a href="https://www.isi.edu/" target="_blank">USC Information Sciences Institute
+										Talk at <a href="https://ut.ee/en/content/megadata-federated-machine-learning"
+											target="_blank">MegaData: Federated Machine Learning</a> about Federated
+										learning Deployement, Tartu University, Tartu, Estonia 2024.
+									</li>
+									<li>
+										Talk at <a href="https://www.isi.edu/" target="_blank">USC Information Sciences
+											Institute
 											(ISI)</a> about Federated learning and IoT <a
-											href="https://www.isi.edu/events/3750/a-federated-learning-framework-for-iot-application-to-industry-4-0/" target="_blank"><i
-												class="fa fa-info-circle" aria-hidden="true"
+											href="https://www.isi.edu/events/3750/a-federated-learning-framework-for-iot-application-to-industry-4-0/"
+											target="_blank"><i class="fa fa-info-circle" aria-hidden="true"
 												style="font-size:24px;color:#3E64FF"></i></a> <a
 											href="https://www.youtube.com/watch?v=3U9hrpB8rT4"><i
 												class="fa fa-youtube-play" style="font-size:24px;color:#3E64FF"></i></a>
@@ -942,26 +1067,29 @@
 				</div>
 				<!-- New project FL Stay tuned, because this project will be available very soon! -->
 				<!-- This soone popup-->
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
-					  <div class="modal-content">
-						<div class="modal-header">
-						  <h5 class="modal-title"> <i class="fa fa-gears" style="font-size:32px;color: #3e64ff;"></i> Project in progress 
-						  </h5>
-						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						  </button>
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title"> <i class="fa fa-gears"
+										style="font-size:32px;color: #3e64ff;"></i> Project in progress
+								</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p> Stay tuned, because this project will be available very soon! <i
+										class="fa fa-smile-o" style="font-size:24px;color:#3e64ff"></i>
+								</p>
+							</div>
 						</div>
-						<div class="modal-body">
-						  <p> Stay tuned, because this project will be available very soon! <i class="fa fa-smile-o" style="font-size:24px;color:#3e64ff"></i>
-						  </p>
-						</div>
-					  </div>
 					</div>
-				  </div>
+				</div>
 				<!--  end -->
 				<div class="col-md-4 text-center d-flex ftco-animate">
-					<a href="#"  class="services-1 shadow"  data-toggle="modal" data-target="#exampleModal">
+					<a href="#" class="services-1 shadow" data-toggle="modal" data-target="#exampleModal">
 						<span class="icon">
 							<i class="fa fa-hand-stop-o" style="color: #3e64ff;"></i>
 						</span>
@@ -1124,6 +1252,7 @@
 					</div>
 				</div>
 			</div>
+
 			<!--
 			<div class="row no-gutters block-9">
 				<div class="col-md-9 col-md-offset-9 order-md-last d-flex centered ">

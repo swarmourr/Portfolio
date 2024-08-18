@@ -1953,3 +1953,39 @@ textarea.form-control {
     stroke-dashoffset: -136px;
   }
 }
+
+.doc-card {
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	width: 300px;
+	text-align: center;
+}
+
+.doc-card h2 {
+	margin: 10px 0;
+	font-size: 22px;
+	color: #333;
+}
+
+.doc-card p {
+	margin: 10px 0;
+	font-size: 14px;
+	color: #666;
+}
+
+.doc-card a {
+	display: inline-block;
+	margin-top: 10px;
+	padding: 10px 15px;
+	background-color: #4CAF50;
+	color: white;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.doc-card a:hover {
+	background-color: #45a049;
+}
